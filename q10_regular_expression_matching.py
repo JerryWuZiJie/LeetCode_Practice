@@ -1,10 +1,11 @@
 # dynamic programming!!!
-'''
+"""
 if some steps need to be process in different ways, better use recursion
 dynamic programming saves the previous results
-'''
+"""
 
 
+# without dp (dynamic programming)
 def isMatch(text, pattern):
     if not pattern:
         return not text
@@ -12,8 +13,8 @@ def isMatch(text, pattern):
     first_match = bool(text) and pattern[0] in {text[0], '.'}
 
     if len(pattern) >= 2 and pattern[1] == '*':
-        return (isMatch(text, pattern[2:]) or
-                first_match and isMatch(text[1:], pattern))
+        return (isMatch(text, pattern[2:]) or  # ?* matches 0 item in text
+                first_match and isMatch(text[1:], pattern))  # ?* matches at least one items in text
     else:
         return first_match and isMatch(text[1:], pattern[1:])
 
@@ -53,6 +54,3 @@ class Solution2(object):
                 else:
                     dp[i][j] = first_match and dp[i + 1][j + 1]
         return dp[0][0]
-
-
-print(Solution2().isMatch('aaa', 'aa.*a'))

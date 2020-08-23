@@ -1,4 +1,5 @@
 # two pointers (in fact not necessary)
+# create a dummy node in front of the linklist sometimes helps
 """
 two approach:
 1: run through the list and store the length

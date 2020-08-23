@@ -1,8 +1,9 @@
-# use recursion is better; it's actually quite easy since time complexity is O(3^n)
+# use recursion is better; this question is actually quite easy since time complexity is O(3^n)
 
 from typing import List
 
 
+# recursive solution
 class Solution:
     def letterCombinations(self, digits):
         """

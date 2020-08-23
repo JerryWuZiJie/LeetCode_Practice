@@ -1,5 +1,6 @@
 # two pointers!!!
-# sometimes nested function helps a lot, say sort()
+# sometimes nested function helps a lot (sort() in this case)
+
 from typing import List
 
 
@@ -8,7 +9,7 @@ class Solution:
         result = []
         nums.sort()
         i = 0
-        while i < len(nums) - 2:
+        while i < len(nums) - 2 and nums[i] <= 0:  # if i > 0, there's no way to add up to 0
             if i == 0 or i > 0 and nums[i] != nums[i - 1]:  # if equal, then duplicated
                 j = i + 1
                 k = len(nums) - 1
@@ -28,6 +29,3 @@ class Solution:
                         k -= 1
             i += 1
         return result
-
-
-print(Solution().threeSum([-1, 0, 1, 2, -1, -4]))

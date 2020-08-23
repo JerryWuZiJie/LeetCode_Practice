@@ -10,6 +10,5 @@ def lengthOfLongestSubstring(s):
         if s[j] in dic:
             i = max(i, dic[s[j]])
         result = max(result, j - i)
-        print(i, j, j-1)
         dic[s[j]] = j
     return result

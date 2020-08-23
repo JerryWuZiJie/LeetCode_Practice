@@ -56,7 +56,7 @@ class Solution:
         return head
 
 
-# java implementation, less checking, shorter code
+# java implementation, use a place holder if one list is run to the end
 '''
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     ListNode dummyHead = new ListNode(0);
@@ -79,8 +79,7 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 }
 '''
 
-# Interesting: recursive
-# implementation
+# Interesting: recursive implementation
 '''
 def addTwoNumbers(self, l1, l2, c=0):
     """
