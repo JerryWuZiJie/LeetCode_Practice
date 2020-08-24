@@ -1,4 +1,5 @@
 # check Manacher's Algorithm for a O(n) solution
+# 11:50 https://www.youtube.com/watch?v=nbTSfrEfo6M&t=2s
 
 
 class Solution:
@@ -27,3 +28,44 @@ class Solution:
                 i -= 1
             i += 1
         return s[result[1]: result[2]]
+
+
+# Manacher's algorithm
+def manacher(s):
+    if len(s) == 0:
+        return ''
+
+    n = len(s) * 2 + 3
+    # s = abc    text = $#a#b#c#@
+    text = ['#'] * n
+    text[0] = '$'
+    text[-1] = '@'
+    k = 0
+    for i in range(2, n - 2, 2):
+        text[i] = s[k]
+        k += 1
+
+    length = [0] * n
+    c = 0  # center
+    r = 0  # right edge
+    i_len = [0, 0]  # [index of text, length of palindrome]
+
+    for i in range(2, n - 2):  # starts from first letter and ends with last letter
+        if i < r:
+            length[i] = min(r - i, length[2 * c - i])
+
+        while text[i - length[i] - 1] == text[i + length[i] + 1]:
+            length[i] += 1
+
+        if i + length[i] > r:
+            c = i
+            r = i + length[i]
+
+        if length[i] > i_len[0]:
+            i_len[0] = length[i]
+            i_len[1] = i
+
+    # create max palindrome
+    start = i_len[1] - i_len[0] + 1
+    end = i_len[1] + i_len[0]
+    return ''.join([text[t] for t in range(start, end, 2)])
